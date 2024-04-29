@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+import java.util.Collection;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -32,6 +34,9 @@ public class Course {
     @OneToOne
     @JoinColumn(name = "Idp")
     private Professor professor;
+
+    @OneToMany(mappedBy = "course")
+    private Collection<Grade> grades;
 
     public Course(String title, int cp, Professor professor) {
         setTitle(title);
