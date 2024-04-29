@@ -36,6 +36,7 @@ public class Course {
     private Professor professor;
 
     @OneToMany(mappedBy = "course")
+    @ToString.Exclude
     private Collection<Grade> grades;
 
     public Course(String title, int cp, Professor professor) {
