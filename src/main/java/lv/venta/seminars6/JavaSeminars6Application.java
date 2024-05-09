@@ -26,9 +26,9 @@ public class JavaSeminars6Application {
 				Student s1 = new Student("Janis", "Berzins");
 				Student s2 = new Student("Karlis", "Kalmars");
 				Student s3 = new Student("Daniels", "Kalvans");
-				Professor p1 = new Professor("Rudolfs", "Sniedzins", Degree.other);
-				Professor p2 = new Professor("Kurts", "Kobeins", Degree.phd);
-				Professor p3 = new Professor("Vilmars", "Bobers", Degree.bsc);
+				Professor p1 = new Professor("Rudolfs", "Sniedzins", Degree.OTHER);
+				Professor p2 = new Professor("Kurts", "Kobeins", Degree.PHD);
+				Professor p3 = new Professor("Vilmars", "Bobers", Degree.BSC);
 				Course c1 = new Course("Matematika", 4, p1);
 				Course c2 = new Course("Anglu valoda", 2, p2);
 				Course c3 = new Course("Dzive", 10, p3);

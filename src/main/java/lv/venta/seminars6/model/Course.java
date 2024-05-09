@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Getter
@@ -31,18 +32,33 @@ public class Course {
     @Column(name = "Cp")
     private int cp;
 
-    @OneToOne
-    @JoinColumn(name = "Idp")
-    private Professor professor;
+    @ManyToMany
+    @JoinTable(name = "CourseProfessorTable",
+    joinColumns = @JoinColumn(name="Idc"),
+    inverseJoinColumns = @JoinColumn(name="Idp"))
+    @ToString.Exclude
+    private Collection<Professor> professors = new ArrayList<>();
 
     @OneToMany(mappedBy = "course")
     @ToString.Exclude
     private Collection<Grade> grades;
 
-    public Course(String title, int cp, Professor professor) {
+    public Course(String title, int cp, Professor ... professors) {
         setTitle(title);
         setCp(cp);
-        setProfessor(professor);
+        for (Professor professor : professors) {
+            addProfessor(professor);
+        }
+    }
+
+    public void addProfessor(Professor professor) {
+        if (!professors.contains(professor)) {
+            professors.add(professor);
+        }
+    }
+
+    public void deleteProfessor(Professor professor) {
+        professors.remove(professor);
     }
 
 }

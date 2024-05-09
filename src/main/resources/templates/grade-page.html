@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"></title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Grade ID</th>
+        <th>Grade Value</th>
+        <th>Course</th>
+        <th>Student</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="tempG: ${data}">
+        <td th:text="${tempG.getIdg()}"></td>
+        <td th:text="${tempG.getGrvalue()}"></td>
+        <td th:text="${tempG.getCourse()}"></td>
+        <td th:text="${tempG.getStudent()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
